@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(216, 216, 216);
+}
+
+/* NAVBAR */
+
+/* ancors de la barra nav */
+.nav-link {
+    color: white;
+    font-size: large;
+    font-weight: 600;
+}
+
+.nav-item {
+    margin-left: 5px;
+    border-radius: 20px;
+    border: white solid 1.8px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (min-width:547px) and (max-width:991px) {
+    .nav-item {
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width:0px) and (max-width:546px) {
+    .nav-item {
+        width: 50%;
+    }
+}
+
+/* CARRUCEL */
+
+/* imagenes del carrucel */
+.slide img {
+    height: 30vh;
+    object-fit: cover;
+}
+
+/* contenedor Titulo home */
+.carousel-caption {
+    height: 80%;
+}
+
+/* FORMULARIO Y BARRA DE BUSQUEDAD */
+
+/* contenedor de formulario y barra busquedad */
+.row_padre {
+    height: 13vh;
+    width: 100%;
+}
+
+/* Barra busquedad search */
+.barra_busq {
+    border-radius: 15px;
+    width: 90%;
+}
+
+/* boton inpunt y label de formulario */
+
+.input-group-text {
+    border-radius: 15px;
+    border: rgb(216, 216, 216) solid 1.8px;
+    background-color: rgb(216, 216, 216);
+
+}
+
+@media only screen and (min-width:0px) and (max-width:564px) {
+    .input-group-text label {
+        font-size: 20px;
+    }
+}
+
+label {
+    font-size: large;
+}
+
+.barra_busq {
+    height: 100%;
+}
+
+@media only screen and (min-width:0px) and (max-width:971px) {
+    .barra_busq {
+        height: 50%;
+    }
+}
+
+.btn_checkbox {
+    width: 2.5vw;
+    height: 2.5vh;
+}
+
+/* TARJETAS DETAILS EVENTS */
+
+/* contenedor titulo de las tarjetas */
+.card-title {
+    text-align: center;
+    width: 100%;
+    height: auto;
+}
+
+#cont_cards {
+    width: 100%;
+    height: 100%;
+}
+
+#cont_cards img {
+    width: 100%;
+    height: 40%;
+    object-fit: cover;
+}
+
+.card {
+    width: 50vw;
+    height: 60vh;
+    border-radius: 15px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50%;
+}
+
+#cont1_vis_nieto {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+#cont2_vis_nieto {
+    width: 100%;
+    height: auto;
+}
+
+/* FOOTER */
+
+/* Ancors facebook, instagram, whatsapp */
+
+.red_social img {
+    width: 3vw;
+    height: 3vw;
+    margin-left: 2vw;
+    border-radius: 40px;
+}
+
+.fhijo {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 100%;
+}
+
+.red_social {
+    color: rgb(49, 49, 49);
+}
+
+/* footer */
+
+.footer {
+    height: 10vh;
+}
+
+.fpadre {
+    height: 10vh;
+    width: 99%;
+}
+
+.cohort {
+    display: flex;
+    justify-content: end;
+}
+
+/* PAGINA CONTACT */
+/* Formulario */
+
+.container_p {
+    height: 75vh;
+}
+
+.container_h {
+    width: 40%;
+    height: 90%;
+}
+
+.container_h form {
+    height: 100%;
+}
+
+.container_h form {
+    width: 90%;
+    height: 90%;
+}
+
+/* PAGINA DETAILS */
+/* Card */
+.cont_p_details {
+    height: 70vh;
+    width: 90%;
+}
+
+.container_h_details {
+    height: 85%;
+    width: 90%;
+}
+
+.cont_n_1_details {
+    height: 100%;
+    width: 40%;
+}
+
+.cont_n_1_details img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cont_n_2_details {
+    height: 100%;
+    width: 50%;
+}
+
+/* PAGINA STATS */
+
+/* contenedor tabla */
+.tabla {
+    width: 100%;
+    height: 50vh;
+}
+
+table {
+    background-color: white;
+}
+
+/* titulo h5 */
+
+.tittle_table {
+    border: black solid 2px;
+    background-color: darkgray;
+    color: black;
+    height: 4.6vh;
+    width: 80vw;
+}
+
+th,
+td {
+    border: black solid 2px;
+    width: 23.3vw;
+    height: 4vh;
+    padding-left: 20px;
+}
