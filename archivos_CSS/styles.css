@@ -205,31 +205,43 @@ label {
 /* PAGINA DETAILS */
 /* Card */
 .cont_p_details {
+    border: red solid;
     height: 70vh;
     width: 90%;
 }
 
 .container_h_details {
-    height: 85%;
+    border: green solid;
+    height: 90%;
     width: 90%;
 }
 
 .cont_n_1_details {
+    border: gray solid;
     height: 100%;
     width: 40%;
 }
 
 .cont_n_1_details img {
+    border: blue solid;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 .cont_n_2_details {
+    border: blueviolet solid;
     height: 100%;
     width: 50%;
 }
-
+/*titulo de cada dato etiqueta span*/
+.span{
+    font-size: larger;
+}
+/*descripcion de la tarjeta*/
+#descripcion{
+    font-size: large;
+}
 /* PAGINA STATS */
 
 /* contenedor tabla */
@@ -242,7 +254,7 @@ table {
     background-color: white;
 }
 
-/* titulo h5 */
+/* titulo h5 de las tablas */
 
 .tittle_table {
     border: black solid 2px;
