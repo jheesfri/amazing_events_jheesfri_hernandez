@@ -7,7 +7,6 @@
 body {
     background-color: rgb(216, 216, 216);
 }
-
 /* NAVBAR */
 
 /* ancors de la barra nav */
@@ -84,9 +83,7 @@ label {
     font-size: large;
 }
 
-.barra_busq {
-    height: 100%;
-}
+
 
 @media only screen and (min-width:0px) and (max-width:971px) {
     .barra_busq {
@@ -132,13 +129,13 @@ label {
     height: 50%;
 }
 
-#cont1_vis_nieto {
+.cont1_vis_nieto {
     text-align: center;
     width: 100%;
     height: 100%;
 }
 
-#cont2_vis_nieto {
+.cont2_vis_nieto {
     width: 100%;
     height: auto;
 }
@@ -205,38 +202,32 @@ label {
 /* PAGINA DETAILS */
 /* Card */
 .cont_p_details {
-    border: red solid;
-    height: 70vh;
-    width: 90%;
+    width: 80%;
 }
 
 .container_h_details {
-    border: green solid;
     height: 90%;
-    width: 90%;
+    width: 95%;
 }
 
 .cont_n_1_details {
-    border: gray solid;
     height: 100%;
     width: 40%;
 }
 
 .cont_n_1_details img {
-    border: blue solid;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 .cont_n_2_details {
-    border: blueviolet solid;
     height: 100%;
     width: 50%;
 }
 /*titulo de cada dato etiqueta span*/
 .span{
-    font-size: larger;
+    font-size: x-large;
 }
 /*descripcion de la tarjeta*/
 #descripcion{

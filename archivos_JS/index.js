@@ -1,4 +1,4 @@
-let data = {
+const data = {
   currentDate: "2023-01-01",
   events: [
     {
@@ -210,21 +210,20 @@ function pintar_tarjeta(div_padre, info) {
 function crear_tarjeta(div_padre_home, tarjeta) {
 // aca aplicare el URLSerchParams
 let urlDetails = "http://127.0.0.1:5501/details.html"
-console.log(urlDetails);
   let div_hijo_home = document.createElement("div")
   div_hijo_home.className = "card"
   div_hijo_home.classList.add("my-2")
   div_hijo_home.classList.add("py-2")
   div_hijo_home.classList.add("px-2")
-  div_hijo_home.style = "width: 16rem;"
+  div_hijo_home.style = "width: 18rem;"
   div_hijo_home.innerHTML = `
     <img src = "${tarjeta.image}" class="card-img-top" alt = "museum">
       <div class="card-body">
-        <div class="row" id="cont1_vis_nieto">
+        <div class="row cont1_vis_nieto">
          <h5 class="card-title">${tarjeta.name}</h5>
          <p class="card-text">${tarjeta.description}</p>
         </div>
-        <div class="row d-flex justify-content-center align-items-end" id="cont2_vis_nieto">
+        <div class="row d-flex justify-content-center align-items-end cont2_vis_nieto">
           <p class="col-6 d-flex justify-content-center my-2">${tarjeta.price}</p>
           <a href="${urlDetails+"?value="+tarjeta._id}" class="col-6 btn btn-primary">Details</a>
         </div>
@@ -261,21 +260,6 @@ pintarCheckbox(categorys, contenedorInputs)
 //DECLARO UNA VARIABLE PARA LLMAR EL ELEMENTO DONDE EL USUARIO VA INGRESAR SU EVENTO A BUSCAR Y 
 let inputText = document.getElementById('inputText')
 
-//ACA AREMOS UNA FUNCION QUE ME VA FILTAR LOS EVENTOS QUE TENGAN INCLUIDO EN SU TITULO Y DESCRIPCION LAS LETRAS QUE EL CLIENTE A DIGITADO EN EL INPUT TYPE TEXT 
-function filtroPorText(textoInput, array) {
-  //VERIFICO SI EL INPUT ESTA VACIO SI LO ESTA PINTO TODAS LAS TAJETAS QUE HAY EN EL ARRAY 
-  if (!textoInput) {
-    return array
-  }
-  //SI TIENE ALGUN VALOR EL INPUT REALIZA ESTA OPERACION CREA UNA VARIABLE DONDE FILTRARA LAS TARJETAS QUE INCLUYAN EL VALOR DEL INPUT EN SUS PROPIEDADES NAME Y DESCRIPTION Y LAS CONVIERTO A MINUSCULAS PARA HACER UNA COMPARACION MAS EXACTA 
-  let eventosFiltrado = array.filter(posicion => {
-    let nameMinuscula = posicion.name.toLowerCase()
-    let descriptionMinuscula = posicion.description.toLowerCase()
-    return nameMinuscula.includes(textoInput.toLowerCase()) || descriptionMinuscula.includes(textoInput.toLowerCase())
-  })
-  //ACA RETORNO EL RESULTADO OBTENIDO QUE SERIAN LAS TARJETAS QUE INCLUYEN EL TEXTO QUE TIENE EL VALUE DEL INPUT
-  return eventosFiltrado
-}
 //AGREGO EL EVENTO 'INPUT' PARA EL INPUTTEXT Y TOMARA EL VALOR ACTUAL QUE TIENE EL VALUE DEL MISMO Y DECLARO UNAVARIABLE DONDE GUARDARE LA FUNCION QUE ME FILTRA POR TEXTO Y ME RETORNA UN RESULTADO
 inputText.addEventListener('keyup', (e) => {
   let checkboxcheck = document.querySelectorAll('input[type=checkbox]:checked')

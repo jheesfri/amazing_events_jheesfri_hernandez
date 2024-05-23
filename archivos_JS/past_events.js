@@ -1,4 +1,4 @@
-const data = {
+let data = {
     currentDate: "2023-01-01",
     events: [
         {
@@ -195,43 +195,104 @@ const data = {
     ],
 };
 
+let pastEvents = data.events.filter(evento => evento.date < "2023-01-01")
 let div_padre_past_events = document.getElementById("cont_cards")
-console.log(div_padre_past_events);
-
-
-
-
-
-//crear_tarjeta(div_padre_past_events,data.events[0])
-crear_varias_tarjetas(div_padre_past_events, data.events)
-function crear_varias_tarjetas(div_padre, tarjeta) {
+//crear_tarjetas
+pastEvents.forEach((evento) => {
+    crear_tarjeta(div_padre_past_events, evento)
+})
+//crear_varias_tarjetas(div_padre_past_events, pastEvents)
+function pintar_tarjeta(div_padre, tarjeta) {
+    div_padre.innerHTML = ""
     for (let i = 0; i < tarjeta.length; i++) {
-        if (tarjeta[i].date < "2023-01-01") {
-            crear_tarjeta(div_padre, tarjeta[i])
-        }
-
+        crear_tarjeta(div_padre, tarjeta[i])
     }
 }
 
 function crear_tarjeta(div_padre, tarjeta) {
-
+    let urlDetails = "http://127.0.0.1:5501/details.html"
     let div_hijo = document.createElement("div")
     div_hijo.className = "card"
     div_hijo.classList.add("my-2")
     div_hijo.classList.add("py-2")
     div_hijo.classList.add("px-2")
-    div_hijo.style = "width: 16rem;"
+    div_hijo.style = "width: 18rem;"
     div_hijo.innerHTML = `
-      <img src = "${tarjeta.image}" class="card-img-top" alt = "museum">
+      <img src = "${tarjeta.image}" class="card-img-top" alt = "${tarjeta.category}">
         <div class="card-body">
-          <div class="row" id="cont1_vis_nieto">
+          <div class="row cont1_vis_nieto" >
            <h5 class="card-title">${tarjeta.name}</h5>
            <p class="card-text">${tarjeta.description}</p>
           </div>
-          <div class="row d-flex justify-content-center align-items-end" id="cont2_vis_nieto">
+          <div class="row d-flex justify-content-center align-items-end cont2_vis_nieto">
             <p class="col-6 d-flex justify-content-center my-2">${tarjeta.price}</p>
-            <a href="/details.html" class="col-6 btn btn-primary">Details</a>
+            <a href="${urlDetails+"?value="+tarjeta._id}" class="col-6 btn btn-primary">Details</a>
           </div>
         </div>`
     div_padre.appendChild(div_hijo)
 }
+//checkbox con categorias y funcinalidad
+let categorys = [... new Set(pastEvents.map(evento => evento.category))]
+let contenedorInputs = document.getElementById('contenedorInputs')
+pintarCheckbox(categorys, contenedorInputs)
+function pintarCheckbox(array, contenedor) {
+    array.forEach((category) => {
+        let divHijo = document.createElement('div')
+        divHijo.classList.add('input-group-text')
+        divHijo.innerHTML = `<input class="btn_checkbox" type="checkbox" id="${category.replace(/\s/g, "").toLowerCase()}" name="${category}" value="${category}">
+      <label for="${category.replace(/\s/g, "").toLowerCase()}">${category}</label>
+      `
+        contenedor.appendChild(divHijo)
+    })
+
+}
+let filtroPorCheck = []
+function filtroPorChecked(arrayOriginal, arrayFiltro) {
+    let checkboxcheck = document.querySelectorAll('input[type=checkbox]:checked')
+    arrayFiltro = pastEvents.filter(evento => {
+        for (let i = 0; i < checkboxcheck.length; i++) {
+            if (checkboxcheck[i].value == evento.category) {
+                return evento
+            }
+        }
+    })
+    if (arrayFiltro == 0) {
+        pintar_tarjeta(div_padre_past_events, arrayOriginal)
+    } else {
+        pintar_tarjeta(div_padre_past_events, arrayFiltro)
+    }
+}
+
+contenedorInputs.addEventListener('input', (e) => {
+    filtroPorChecked(pastEvents, filtroPorCheck)
+})
+
+//input para buscar eventos por texto
+let inputText = document.getElementById('inputText')
+inputText.addEventListener('keyup', (e) => {
+    let checkboxcheck = document.querySelectorAll('input[type=checkbox]:checked')
+    let eventosFiltrados = pastEvents.filter(evento => {
+        for (let i = 0; i < checkboxcheck.length; i++) {
+            if (checkboxcheck[i].value == evento.category) {
+                return evento
+            }
+        }
+    })
+    if (eventosFiltrados == 0) {
+        eventosFiltrados = pastEvents
+        pintar_tarjeta(div_padre_past_events,eventosFiltrados)
+    } else {
+        pintar_tarjeta(div_padre_past_events, eventosFiltrados)
+    }
+    let texto = e.target.value
+    if (!texto) {
+        pintar_tarjeta(div_padre_past_events, eventosFiltrados)
+    } else {
+        texto.toLowerCase()
+        let array = eventosFiltrados.filter(i => i.name.toLocaleLowerCase().includes(texto) || i.description.toLocaleLowerCase().includes(texto))
+        pintar_tarjeta(div_padre_past_events, array)
+        if (array.length == 0) {
+            div_padre_past_events.innerHTML = `<p>no hay nada para mostrar</p>`
+        }
+    }
+})

@@ -1,5 +1,3 @@
-console.log("pagina details");
-
 let data = {
     currentDate: "2023-01-01",
     events: [
@@ -195,19 +193,13 @@ let data = {
             __v: 0,
         },
     ],
-}; console.log(data.events[8]);
-
+}
 let url = window.location.href
 url = new URL(url).searchParams.get("value")
 let contPDetails = document.getElementById('contenedorPDetails')
-
-console.log(url);
-console.log(contPDetails);
 document.addEventListener('DOMContentLoaded', (e) => {
     let tarjeta = data.events.filter(evento => evento._id == url)
-    console.log(tarjeta);
     tarjeta.forEach(e => {
-        console.log(e.assistance || e.estimate);
         contPDetails.innerHTML = `
         <div class="row g-0 d-flex justify-content-evenly container_h_details my-5">
     <div class="col-6 -md-4 cont_n_1_details h-100">
