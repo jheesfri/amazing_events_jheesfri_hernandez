@@ -276,7 +276,7 @@ function filtroPorChecked(arrayOriginal, arrayFiltro) {
         div_padre_past_events.innerHTML = `<div class="card" style="width: 18rem;">
         <img src="https://previews.123rf.com/images/nordfox/nordfox1909/nordfox190900027/131978823-lupa-rota-el-concepto-de-b%C3%BAsqueda-err%C3%B3nea-investigaci%C3%B3n-falsa-y-estudio-incorrecto-lupa.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-text">"No hay eventos que coincidan con tu búsqueda ahora, pero ¡seguro que pronto habrá algo emocionante!"</h5>
+          <h5    class="card-text">"No hay eventos que coincidan con tu búsqueda ahora, pero ¡seguro que pronto habrá algo emocionante!"</h5>
         </div>
       </div>`
        }
