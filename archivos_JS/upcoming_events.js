@@ -240,21 +240,42 @@ function pintarCheckbox(array, contenedor) {
     })
 }
 let filtroPorCheck = []
+
 function filtroPorChecked(arrayOriginal, arrayFiltro) {
-    let checkboxcheck = document.querySelectorAll('input[type=checkbox]:checked')
-    arrayFiltro = upcomingEvents.filter(evento => {
-        for (let i = 0; i < checkboxcheck.length; i++) {
-            if (checkboxcheck[i].value == evento.category) {
-                return evento
-            }
-        }
-    })
-    if (arrayFiltro == 0) {
-        pintar_tarjeta(div_padre_upcoming_events, arrayOriginal)
-    } else {
-        pintar_tarjeta(div_padre_upcoming_events, arrayFiltro)
-    }
-}
+    let texto = inputText.value
+     let checkboxcheck = document.querySelectorAll('input[type=checkbox]:checked')
+     arrayFiltro = arrayOriginal.filter(evento => {
+       for (let i = 0; i < checkboxcheck.length; i++) {
+         if (checkboxcheck[i].value == evento.category) {
+           return evento
+         }
+       }
+     })
+     console.log(arrayFiltro);
+    
+     let arrayFiltro2 = arrayFiltro.filter(evento => evento.name.toLocaleLowerCase().includes(texto.toLocaleLowerCase()) || evento.description.toLocaleLowerCase().includes(texto.toLocaleLowerCase()))
+     console.log(arrayFiltro2);
+     if (checkboxcheck.length == 0) {
+       if (texto != "") {
+         let arrayTexto = arrayOriginal.filter(evento => evento.name.toLocaleLowerCase().includes(texto.toLocaleLowerCase()) || evento.description.toLocaleLowerCase().includes(texto.toLocaleLowerCase()))
+         console.log(arrayTexto);
+         pintar_tarjeta(div_padre_upcoming_events, arrayTexto)
+   
+       } else {
+         pintar_tarjeta(div_padre_upcoming_events, arrayOriginal)
+       }
+     } else {
+       pintar_tarjeta(div_padre_upcoming_events, arrayFiltro2)
+       if (arrayFiltro2.length == 0) {
+        div_padre_upcoming_events.innerHTML = `<div class="card" style="width: 18rem;">
+        <img src="https://previews.123rf.com/images/nordfox/nordfox1909/nordfox190900027/131978823-lupa-rota-el-concepto-de-b%C3%BAsqueda-err%C3%B3nea-investigaci%C3%B3n-falsa-y-estudio-incorrecto-lupa.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5    class="card-text">"No hay eventos que coincidan con tu búsqueda ahora, pero ¡seguro que pronto habrá algo emocionante!"</h5>
+        </div>
+      </div>`
+       }
+     }
+   }
 contenedorInputs.addEventListener('input', (e) => {
     filtroPorChecked(upcomingEvents, filtroPorCheck)
 })
@@ -282,10 +303,12 @@ inputText.addEventListener('keyup', (e) => {
         let array = eventosFiltrados.filter(i => i.name.toLocaleLowerCase().includes(texto) || i.description.toLocaleLowerCase().includes(texto))
         pintar_tarjeta(div_padre_upcoming_events, array)
         if (array.length == 0) {
-            div_padre_upcoming_events.innerHTML = `
-            <div>
-            <p>"No hay eventos que coincidan con tu búsqueda ahora, pero ¡seguro que pronto habrá algo emocionante!"</p>
-            </div>`
+            div_padre_upcoming_events.innerHTML = `<div class="card" style="width: 18rem;">
+            <img src="https://previews.123rf.com/images/nordfox/nordfox1909/nordfox190900027/131978823-lupa-rota-el-concepto-de-b%C3%BAsqueda-err%C3%B3nea-investigaci%C3%B3n-falsa-y-estudio-incorrecto-lupa.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5    class="card-text">"No hay eventos que coincidan con tu búsqueda ahora, pero ¡seguro que pronto habrá algo emocionante!"</h5>
+            </div>
+          </div>`
         }
     }
 })

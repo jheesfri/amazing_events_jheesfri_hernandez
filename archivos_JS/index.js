@@ -208,8 +208,8 @@ function pintar_tarjeta(div_padre, info) {
 }
 
 function crear_tarjeta(div_padre_home, tarjeta) {
-// aca aplicare el URLSerchParams
-let urlDetails = "http://127.0.0.1:5501/details.html"
+  // aca aplicare el URLSerchParams
+  let urlDetails = "http://127.0.0.1:5501/details.html"
   let div_hijo_home = document.createElement("div")
   div_hijo_home.className = "card"
   div_hijo_home.classList.add("my-2")
@@ -225,7 +225,7 @@ let urlDetails = "http://127.0.0.1:5501/details.html"
         </div>
         <div class="row d-flex justify-content-center align-items-end cont2_vis_nieto">
           <p class="col-6 d-flex justify-content-center my-2">${tarjeta.price}</p>
-          <a href="${urlDetails+"?value="+tarjeta._id}" class="col-6 btn btn-primary">Details</a>
+          <a href="${urlDetails + "?value=" + tarjeta._id}" class="col-6 btn btn-primary">Details</a>
         </div>
       </div>`
   div_padre_home.appendChild(div_hijo_home)
@@ -271,7 +271,7 @@ inputText.addEventListener('keyup', (e) => {
     }
   })
   if (eventosFiltrados == 0) {
-    eventosFiltrados = data.events
+    eventosFiltrados = data.events //revisar si esta linea es necesaria
     pintar_tarjeta(div_padre_home, data.events)
   } else {
     pintar_tarjeta(div_padre_home, eventosFiltrados)
@@ -279,12 +279,17 @@ inputText.addEventListener('keyup', (e) => {
   let texto = e.target.value
   if (!texto) {
     pintar_tarjeta(div_padre_home, eventosFiltrados)
-  }else{
+  } else {
     texto.toLowerCase()
     let array = eventosFiltrados.filter(i => i.name.toLocaleLowerCase().includes(texto) || i.description.toLocaleLowerCase().includes(texto))
     pintar_tarjeta(div_padre_home, array)
     if (array.length == 0) {
-      div_padre_home.innerHTML = `<p>no hay nada para mostrar</p>`
+      div_padre_home.innerHTML = `<div class="card" style="width: 18rem;">
+      <img src="https://previews.123rf.com/images/nordfox/nordfox1909/nordfox190900027/131978823-lupa-rota-el-concepto-de-b%C3%BAsqueda-err%C3%B3nea-investigaci%C3%B3n-falsa-y-estudio-incorrecto-lupa.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5    class="card-text">"No hay eventos que coincidan con tu búsqueda ahora, pero ¡seguro que pronto habrá algo emocionante!"</h5>
+      </div>
+    </div>`
     }
   }
 })
@@ -293,24 +298,44 @@ inputText.addEventListener('keyup', (e) => {
 let filtroPorCheck = []
 //AHORA VOY A PINTAR LAS TARJETAS POR CATEGORIAS 
 contenedorInputs.addEventListener('change', () => {
-   filtroPorChecked(data.events,filtroPorCheck)
+  filtroPorChecked(data.events, filtroPorCheck)
 
 })
 //funcion para filtrar tarjetas por inputs checked
 
 
 function filtroPorChecked(arrayOriginal, arrayFiltro) {
+ let texto = inputText.value
   let checkboxcheck = document.querySelectorAll('input[type=checkbox]:checked')
-  arrayFiltro = data.events.filter(evento => {
-      for (let i = 0; i < checkboxcheck.length; i++) {
-        if (checkboxcheck[i].value == evento.category) {
-          return evento
-        }
+  arrayFiltro = arrayOriginal.filter(evento => {
+    for (let i = 0; i < checkboxcheck.length; i++) {
+      if (checkboxcheck[i].value == evento.category) {
+        return evento
       }
-    })
-  if (arrayFiltro == 0) {
-    pintar_tarjeta(div_padre_home, arrayOriginal)
+    }
+  })
+  console.log(arrayFiltro);
+ 
+  let arrayFiltro2 = arrayFiltro.filter(evento => evento.name.toLocaleLowerCase().includes(texto.toLocaleLowerCase()) || evento.description.toLocaleLowerCase().includes(texto.toLocaleLowerCase()))
+  console.log(arrayFiltro2);
+  if (checkboxcheck.length == 0) {
+    if (texto != "") {
+      let arrayTexto = arrayOriginal.filter(evento => evento.name.toLocaleLowerCase().includes(texto.toLocaleLowerCase()) || evento.description.toLocaleLowerCase().includes(texto.toLocaleLowerCase()))
+      console.log(arrayTexto);
+      pintar_tarjeta(div_padre_home, arrayTexto)
+
+    } else {
+      pintar_tarjeta(div_padre_home, arrayOriginal)
+    }
   } else {
-    pintar_tarjeta(div_padre_home, arrayFiltro)
+    pintar_tarjeta(div_padre_home, arrayFiltro2)
+    if (arrayFiltro2.length == 0) {
+     div_padre_home.innerHTML = `<div class="card" style="width: 18rem;">
+     <img src="https://previews.123rf.com/images/nordfox/nordfox1909/nordfox190900027/131978823-lupa-rota-el-concepto-de-b%C3%BAsqueda-err%C3%B3nea-investigaci%C3%B3n-falsa-y-estudio-incorrecto-lupa.jpg" class="card-img-top" alt="...">
+     <div class="card-body">
+       <h5    class="card-text">"No hay eventos que coincidan con tu búsqueda ahora, pero ¡seguro que pronto habrá algo emocionante!"</h5>
+     </div>
+   </div>`
+    }
   }
 }
