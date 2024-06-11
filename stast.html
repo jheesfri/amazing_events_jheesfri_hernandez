@@ -85,11 +85,13 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+
+        <!-- tabla de estadisticas -->
         <div class="tabla d-flex flex-column justify-content-center align-items-center my-5">
             <table>
                 <thead>
                     <tr>
-                        <th class="tittle_table" colspan="3">Events Statistics</th>
+                        <th class="tittle_table text-center bg-dark bg-gradient tituloTable" colspan="3">Events Statistics</th>
                     </tr>
                     <tr>
                         <th>Events with highest % of assistance</th>
@@ -99,16 +101,16 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
+                        <td id="mayor%">...</td>
+                        <td id="menor%">...</td>
+                        <td id="mayorAforo">...</td>
                     </tr>
                 </tbody>
             </table>
             <table>
                 <thead>
                     <tr>
-                        <th class="tittle_table" colspan="3">Upcoming events statistics by category</th>
+                        <th class="tittle_table bg-dark bg-gradient text-center tituloTable" colspan="3">Upcoming events statistics by category</th>
                     </tr>
                     <tr>
                         <th>Categories</th>
@@ -116,23 +118,14 @@
                         <th>Percentage of assistance</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
+                <tbody id="tableBody2">
+                    <!-- aqui van las categorias d elos eventos upcoming events -->
                 </tbody>
             </table>
             <table>
                 <thead>
                     <tr>
-                        <th class="tittle_table" colspan="3">Past events statistics by category</th>
+                        <th class="tittle_table text-center bg-dark bg-gradient tituloTable" colspan="3">Past events statistics by category</th>
                     </tr>
                     <tr>
                         <th>Categories</th>
@@ -140,17 +133,8 @@
                         <th>Percentage of assistance</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
+                <tbody id="tableBody3">
+                    
                 </tbody>
             </table>
 
@@ -159,7 +143,7 @@
     </main>
     <footer class="footer bg-dark bg-gradient">
         <div class="fpadre row align-items-center">
-            <div class="fhijo col-5"> 
+            <div class="fhijo col-5">
                 <a class="red_social" href="https://www.facebook.com/profile.php?id=61557393724458">
                     <img src="/images/facebook.png" alt="facebook">
                 </a>
@@ -180,6 +164,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="../archivos_JS/stast.js" type="module"></script>
+    <script src="/modulo/modulo.js" type="module"></script>
+
 </body>
 
 </html>

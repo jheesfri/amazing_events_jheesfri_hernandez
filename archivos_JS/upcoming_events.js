@@ -1,314 +1,35 @@
-const data = {
-    currentDate: "2023-01-01",
-    events: [
-        {
-            _id: "639c723b992482e5f2834be9",
-            name: "Collectivities Party",
-            image: "https://i.postimg.cc/Fs03hQDt/Collectivities-Party.jpg",
-            date: "2022-12-12",
-            description:
-                "Enjoy your favourite dishes, from different countries, in a unique event for the whole family.",
-            category: "Food Fair",
-            place: "Room A",
-            capacity: 45000,
-            assistance: 42756,
-            price: 5,
-            __v: 0,
-        },
-        {
-            _id: "639c723b992482e5f2834beb",
-            name: "Korean style",
-            image: "https://i.postimg.cc/ZmD3Xf57/Korean-style.jpg",
-            date: "2023-08-12",
-            description:
-                "Enjoy the best Korean dishes, with international chefs and awesome events.",
-            category: "Food Fair",
-            place: "Room A",
-            capacity: 45000,
-            price: 10,
-            __v: 0,
-            estimate: 42756,
-        },
-        {
-            _id: "639c723c992482e5f2834bed",
-            name: "Jurassic Park",
-            image: "https://i.postimg.cc/GmHRkbNV/Jurassic-Park.jpg",
-            date: "2022-11-02",
-            description:
-                "Let's go meet the biggest dinosaurs in the paleontology museum.",
-            category: "Museum",
-            place: "Field",
-            capacity: 82000,
-            price: 15,
-            __v: 0,
-            assistance: 65892,
-        },
-        {
-            _id: "639c723c992482e5f2834bef",
-            name: "Parisian Museum",
-            image: "https://i.postimg.cc/c4C2zXm8/Parisian-Museum.jpg",
-            date: "2023-11-02",
-            description:
-                "A unique tour in the city of lights, get to know one of the most iconic places.",
-            category: "Museum",
-            place: "Paris",
-            capacity: 8200,
-            estimate: 8200,
-            price: 3500,
-            __v: 0,
-        },
-        {
-            _id: "639c723c992482e5f2834bf1",
-            name: "Comicon",
-            image: "https://i.postimg.cc/KYD0jMf2/comicon.jpg",
-            date: "2022-02-12",
-            description:
-                "For comic lovers, all your favourite characters gathered in one place.",
-            category: "Costume Party",
-            place: "Room C",
-            capacity: 120000,
-            assistance: 110000,
-            price: 54,
-            __v: 0,
-        },
-        {
-            _id: "639c723c992482e5f2834bf3",
-            name: "Halloween Night",
-            image: "https://i.postimg.cc/RZ9fH4Pr/halloween.jpg",
-            date: "2023-02-12",
-            description: "Come with your scariest costume and win incredible prizes.",
-            category: "Costume Party",
-            place: "Room C",
-            capacity: 12000,
-            estimate: 9000,
-            price: 12,
-            __v: 0,
-        },
-        {
-            _id: "639c723c992482e5f2834bf5",
-            name: "Metallica in concert",
-            image: "https://i.postimg.cc/PrMJ0ZMc/Metallica-in-concert.jpg",
-            date: "2023-01-22",
-            description: "The only concert of the most emblematic band in the world.",
-            category: "Music Concert",
-            place: "Room A",
-            capacity: 138000,
-            estimate: 138000,
-            price: 150,
-            __v: 0,
-        },
-        {
-            _id: "639c723c992482e5f2834bf7",
-            name: "Electronic Fest",
-            image: "https://i.postimg.cc/KvsSK8cj/Electronic-Fest.jpg",
-            date: "2022-01-22",
-            description:
-                "The best national and international DJs gathered in one place.",
-            category: "Music Concert",
-            place: "Room A",
-            capacity: 138000,
-            assistance: 110300,
-            price: 250,
-            __v: 0,
-        },
-        {
-            _id: "639c723d992482e5f2834bf9",
-            name: "10K for life",
-            image: "https://i.postimg.cc/fyLqZY9K/10-K-for-life.jpg",
-            date: "2022-03-01",
-            description: "Come and exercise, improve your health and lifestyle.",
-            category: "Race",
-            place: "Soccer field",
-            capacity: 30000,
-            assistance: 25698,
-            price: 3,
-            __v: 0,
-        },
-        {
-            _id: "639c723d992482e5f2834bfb",
-            name: "15K NY",
-            image: "https://i.postimg.cc/zv67r65z/15kny.jpg",
-            date: "2023-03-01",
-            description:
-                "We'll be raising funds for hospitals and medical care in this unique event held in The Big Apple.",
-            category: "Race",
-            place: "New York",
-            capacity: 3000000,
-            price: 3,
-            __v: 0,
-            estimate: 2569800,
-        },
-        {
-            _id: "639c723d992482e5f2834bfd",
-            name: "School's book fair",
-            image: "https://i.postimg.cc/Sst763n6/book1.jpg",
-            date: "2023-10-15",
-            description: "Bring your unused school book and take the one you need.",
-            category: "Book Exchange",
-            place: "Room D1",
-            capacity: 150000,
-            estimate: 123286,
-            price: 1,
-            __v: 0,
-        },
-        {
-            _id: "639c723d992482e5f2834bff",
-            name: "Just for your kitchen",
-            image: "https://i.postimg.cc/05FhxHVK/book4.jpg",
-            date: "2022-11-09",
-            description:
-                "If you're a gastronomy lover come get the cookbook that best suits your taste and your family's.",
-            category: "Book Exchange",
-            place: "Room D6",
-            capacity: 130000,
-            assistance: 90000,
-            price: 100,
-            __v: 0,
-        },
-        {
-            _id: "639c723d992482e5f2834c01",
-            name: "Batman",
-            image: "https://i.postimg.cc/vH52y81C/cinema4.jpg",
-            date: "2022-3-11",
-            description: "Come see Batman fight crime in Gotham City.",
-            category: "Cinema",
-            place: "Room D1",
-            capacity: 11000,
-            assistance: 9300,
-            price: 225,
-            __v: 0,
-        },
-        {
-            _id: "639c723d992482e5f2834c03",
-            name: "Avengers",
-            image: "https://i.postimg.cc/T3C92KTN/scale.jpg",
-            date: "2023-10-15",
-            description:
-                "Marvel's Avengers Premier in 3d, the start of an epic saga with your favourite superheroes.",
-            category: "Cinema",
-            place: "Room D1",
-            capacity: 9000,
-            estimate: 9000,
-            price: 250,
-            __v: 0,
-        },
-    ],
-};
-let upcomingEvents = data.events.filter(evento => evento.date > data.currentDate)
-let div_padre_upcoming_events = document.getElementById("cont_cards")
+//Url de datos API
+const urlEventos = "https://aulamindhub.github.io/amazing-api/events.json"
 
-pintar_tarjeta(div_padre_upcoming_events, upcomingEvents)
+//Funciones Importadas
+import { pintarTarjeta, pintarCheckbox, FiltroTextoYCheckbox } from "../modulo/modulo.js"
 
-function pintar_tarjeta(div_padre, info) {
-    div_padre.innerHTML = ""
-    for (let i = 0; i < info.length; i++) {
-        crear_tarjeta(div_padre, info[i])
-    }
-}
-function crear_tarjeta(div_padre, tarjeta) {
-    let urlDetails = "http://127.0.0.1:5501/details.html"
-    let div_hijo = document.createElement("div")
-    div_hijo.className = "card"
-    div_hijo.classList.add("my-2")
-    div_hijo.classList.add("py-2")
-    div_hijo.classList.add("px-2")
-    div_hijo.style = "width: 18rem;"
-    div_hijo.innerHTML = `
-    <img src = "${tarjeta.image}" class="card-img-top" alt = "${tarjeta.category}">
-      <div class="card-body">
-        <div class="row cont1_vis_nieto" >
-         <h5 class="card-title">${tarjeta.name}</h5>
-         <p class="card-text">${tarjeta.description}</p>
-        </div>
-        <div class="row d-flex justify-content-center align-items-end cont2_vis_nieto">
-          <p class="col-6 d-flex justify-content-center my-2">${tarjeta.price}</p>
-          <a href="${urlDetails + "?value=" + tarjeta._id}" class="col-6 btn btn-primary">Details</a>
-        </div>
-      </div>`
-    div_padre.appendChild(div_hijo)
-}
-let categorys = [... new Set(upcomingEvents.map(evento => evento.category))]
-let contenedorInputs = document.getElementById('contenedorInputs')
-pintarCheckbox(categorys, contenedorInputs)
-function pintarCheckbox(array, contenedor) {
-    array.forEach((category) => {
-        let divHijo = document.createElement('div')
-        divHijo.classList.add('input-group-text')
-        divHijo.innerHTML = `<input class="btn_checkbox" type="checkbox" id="${category.replace(/\s/g, "").toLowerCase()}" name="${category}" value="${category}">
-      <label for="${category.replace(/\s/g, "").toLowerCase()}">${category}<label>`
-        contenedor.appendChild(divHijo)
+//consumo data de la API
+fetch(urlEventos)
+    .then(Response => Response.json())
+    .then(data => {
+        //filtro los eventos del futuro
+        let upcomingEvents = data.events.filter(evento => evento.date > data.currentDate)
+
+        //COntenedor Padre donde se van a pintar las tarjetas
+        let div_padre_upcoming_events = document.getElementById("cont_cards")
+
+        //pinto los eventos
+        pintarTarjeta(div_padre_upcoming_events, upcomingEvents)
+
+        //Pinto Los Checkbox sin repetir categoriias de los eventos
+        let categorys = [... new Set(upcomingEvents.map(evento => evento.category))]
+        let contenedorInputs = document.getElementById('contenedorInputs')
+        pintarCheckbox(categorys, contenedorInputs)
+
+        //Filtros de Texto Y checkbox 
+        let inputText = document.getElementById('inputText')
+        let filtroPorCheck = []
+
+        inputText.addEventListener('keyup', (e) => {
+            FiltroTextoYCheckbox(upcomingEvents, filtroPorCheck, div_padre_upcoming_events)
+        })
+        contenedorInputs.addEventListener('change', () => {
+            FiltroTextoYCheckbox(upcomingEvents, filtroPorCheck, div_padre_upcoming_events)
+        })
     })
-}
-let filtroPorCheck = []
-
-function filtroPorChecked(arrayOriginal, arrayFiltro) {
-    let texto = inputText.value
-     let checkboxcheck = document.querySelectorAll('input[type=checkbox]:checked')
-     arrayFiltro = arrayOriginal.filter(evento => {
-       for (let i = 0; i < checkboxcheck.length; i++) {
-         if (checkboxcheck[i].value == evento.category) {
-           return evento
-         }
-       }
-     })
-     console.log(arrayFiltro);
-    
-     let arrayFiltro2 = arrayFiltro.filter(evento => evento.name.toLocaleLowerCase().includes(texto.toLocaleLowerCase()) || evento.description.toLocaleLowerCase().includes(texto.toLocaleLowerCase()))
-     console.log(arrayFiltro2);
-     if (checkboxcheck.length == 0) {
-       if (texto != "") {
-         let arrayTexto = arrayOriginal.filter(evento => evento.name.toLocaleLowerCase().includes(texto.toLocaleLowerCase()) || evento.description.toLocaleLowerCase().includes(texto.toLocaleLowerCase()))
-         console.log(arrayTexto);
-         pintar_tarjeta(div_padre_upcoming_events, arrayTexto)
-   
-       } else {
-         pintar_tarjeta(div_padre_upcoming_events, arrayOriginal)
-       }
-     } else {
-       pintar_tarjeta(div_padre_upcoming_events, arrayFiltro2)
-       if (arrayFiltro2.length == 0) {
-        div_padre_upcoming_events.innerHTML = `<div class="card" style="width: 18rem;">
-        <img src="https://previews.123rf.com/images/nordfox/nordfox1909/nordfox190900027/131978823-lupa-rota-el-concepto-de-b%C3%BAsqueda-err%C3%B3nea-investigaci%C3%B3n-falsa-y-estudio-incorrecto-lupa.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5    class="card-text">"No hay eventos que coincidan con tu búsqueda ahora, pero ¡seguro que pronto habrá algo emocionante!"</h5>
-        </div>
-      </div>`
-       }
-     }
-   }
-contenedorInputs.addEventListener('input', (e) => {
-    filtroPorChecked(upcomingEvents, filtroPorCheck)
-})
-let inputText = document.getElementById('inputText')
-inputText.addEventListener('keyup', (e) => {
-    let checkboxcheck = document.querySelectorAll('input[type=checkbox]:checked')
-    let eventosFiltrados = upcomingEvents.filter(evento => {
-        for (let i = 0; i < checkboxcheck.length; i++) {
-            if (checkboxcheck[i].value == evento.category) {
-                return evento
-            }
-        }
-    })
-    if (eventosFiltrados == 0) {
-        eventosFiltrados = upcomingEvents
-        pintar_tarjeta(div_padre_upcoming_events,eventosFiltrados)
-    } else {
-        pintar_tarjeta(div_padre_upcoming_events, eventosFiltrados)
-    }
-    let texto = e.target.value
-    if (!texto) {
-        pintar_tarjeta(div_padre_upcoming_events, eventosFiltrados)
-    } else {
-        texto.toLowerCase()
-        let array = eventosFiltrados.filter(i => i.name.toLocaleLowerCase().includes(texto) || i.description.toLocaleLowerCase().includes(texto))
-        pintar_tarjeta(div_padre_upcoming_events, array)
-        if (array.length == 0) {
-            div_padre_upcoming_events.innerHTML = `<div class="card" style="width: 18rem;">
-            <img src="https://previews.123rf.com/images/nordfox/nordfox1909/nordfox190900027/131978823-lupa-rota-el-concepto-de-b%C3%BAsqueda-err%C3%B3nea-investigaci%C3%B3n-falsa-y-estudio-incorrecto-lupa.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5    class="card-text">"No hay eventos que coincidan con tu búsqueda ahora, pero ¡seguro que pronto habrá algo emocionante!"</h5>
-            </div>
-          </div>`
-        }
-    }
-})
