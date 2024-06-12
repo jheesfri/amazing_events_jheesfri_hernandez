@@ -246,18 +246,3 @@ table {
 
 /* titulo h5 de las tablas */
 
-.tittle_table {
-    border: black solid 2px;
-    background-color: darkgray;
-    color: rgb(255, 255, 255);
-    height: 4.6vh;
-    width: 80vw;
-}
-
-th,
-td {
-    border: rgb(221, 221, 221) solid 2px;
-    width: 23.3vw;
-    height: 4vh;
-    padding-left: 20px;
-}
